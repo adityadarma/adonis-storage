@@ -1,7 +1,6 @@
 {{{
   exports({ to: app.configPath('storage.ts') })
 }}}
-import env from '#start/env'
 import { defineConfig } from '@adityadarma/adonis-storage/types'
 import type { InferStorageProviders } from '@adityadarma/adonis-storage/types'
 import app from '@adonisjs/core/services/app'
@@ -31,6 +30,6 @@ export default storageConfig
  * Inferring types for the list of storage you have configured
  * in your application.
  */
-declare module 'adonisjs-storage/types' {
+declare module '@adityadarma/adonis-storage/types' {
   export interface StorageLists extends InferStorageProviders<typeof storageConfig> {}
 }
