@@ -4,9 +4,7 @@ import { Exception } from '@adonisjs/core/exceptions'
 import { DriverContract } from 'flydrive/types'
 
 export default class StorageProvider {
-  constructor(protected app: ApplicationService) {
-    this.app = app
-  }
+  constructor(protected app: ApplicationService) {}
 
   /**
    * Register bindings to the container
@@ -22,7 +20,7 @@ export default class StorageProvider {
       const services = this.app.config.get<object>(`storage.services`)
 
       // Check driver available
-      if (!services.hasOwnProperty(driver)) {
+      if (!services || services.hasOwnProperty(driver)) {
         throw new Exception('Driver drive not found')
       }
 
