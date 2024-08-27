@@ -24,3 +24,7 @@ export interface StorageLists {}
 export type InferStorageProviders<
   T extends DriveManagerOptions<Record<string, () => DriverContract>>,
 > = T['services']
+
+export type DecoratorStorage = (target: any, property: any, descriptor: PropertyDescriptor) => void
+
+export type StorageDecorator = (duration?: string, driver?: string) => DecoratorStorage

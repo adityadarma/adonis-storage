@@ -20,7 +20,8 @@
     ".": "./build/index.js",
     "./services": "./build/services/main.js",
     "./storage_provider": "./build/providers/storage_provider.js",
-    "./types": "./build/src/types/index.js"
+    "./types": "./build/src/types/index.js",
+    "./decorator": "./build/src/decorator/index.js"
   },
   "scripts": {
     "clean": "del-cli build",

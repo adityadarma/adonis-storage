@@ -2,12 +2,10 @@
   exports({ to: app.configPath('storage.ts') })
 }}}
 import env from '#start/env'
-import { defineConfig } from 'adonisjs-storage'
-import type { InferStorageProviders } from 'adonisjs-storage/types'
+import { defineConfig } from '@adityadarma/adonis-storage/types'
+import type { InferStorageProviders } from '@adityadarma/adonis-storage/types'
 import app from '@adonisjs/core/services/app'
 import { FSDriver } from 'flydrive/drivers/fs'
-import { S3Driver } from 'flydrive/drivers/s3'
-import { GCSDriver } from 'flydrive/drivers/gcs'
 
 const storageConfig = defineConfig({
   /**
@@ -24,42 +22,6 @@ const storageConfig = defineConfig({
       location:  app.tmpPath(),
       visibility: 'public',
     }),
-    s3: () => new S3Driver({
-      credentials: {
-        accessKeyId: env.get('AWS_ACCESS_KEY'),
-        secretAccessKey: env.get('AWS_ACCESS_SECRET'),
-      },
-      region: env.get('AWS_DEFAULT_REGION'),
-      bucket: env.get('AWS_BUCKET'),
-      visibility: 'private',
-    }),
-    r2: () => new S3Driver({
-      credentials: {
-        accessKeyId: env.get('AWS_ACCESS_KEY'),
-        secretAccessKey: env.get('AWS_ACCESS_SECRET'),
-      },
-      endpoint: 'https://jg21.r2.cloudflarestorage.com',
-      region: 'auto',
-      supportsACL: false,
-      bucket: env.get('R2_BUCKET'),
-      visibility: 'private',
-    }),
-    do: () => new S3Driver({
-      credentials: {
-        accessKeyId: env.get('DO_ACCESS_KEY'),
-        secretAccessKey: env.get('DO_ACCESS_SECRET'),
-      },
-      endpoint: 'https://sgp1.digitaloceanspaces.com',
-      region: 'sgp1',
-      bucket: env.get('DO_BUCKET'),
-      visibility: 'private',
-    }),
-    gcs: () => new GCSDriver({
-      credentials: env.get('GCS_KEY'),
-      visibility: 'public',
-      bucket: env.get('GCS_BUCKET'),
-      usingUniformAcl: true,
-    })
   },
 })
 export default storageConfig
