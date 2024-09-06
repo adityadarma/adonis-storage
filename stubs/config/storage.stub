@@ -1,7 +1,7 @@
 {{{
   exports({ to: app.configPath('storage.ts') })
 }}}
-import { defineConfig } from '@adityadarma/adonis-storage/types'
+import { defineConfig } from '@adityadarma/adonis-storage'
 import type { InferStorageProviders } from '@adityadarma/adonis-storage/types'
 import app from '@adonisjs/core/services/app'
 import { FSDriver } from 'flydrive/drivers/fs'
